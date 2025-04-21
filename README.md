@@ -4,7 +4,7 @@ The funny little Markov chain generator that could.
 
 ## Usage 
 
-`src/lib/markov.ts` provides a `MarkovGenerator`:
+`src/lib/markov.ts` (`$lib/markov`) exports a `MarkovGenerator`:
 
 ```ts
 const data = ['markov', 'chains', 'are', 'cool'];
