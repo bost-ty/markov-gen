@@ -1,18 +1,22 @@
-# sv
+# markov-gen
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+The funny little Markov chain generator that could.
 
-## Creating a project
+## Usage 
 
-If you're seeing this, you've probably already done this step. Congrats!
+`src/lib/markov.ts` provides a `MarkovGenerator`:
 
-```bash
-# create a new project in the current directory
-npx sv create
+```ts
+const data = ['markov', 'chains', 'are', 'cool'];
+const markov = new MarkovGenerator(data);
 
-# create a new project in my-app
-npx sv create my-app
+let newTerm = markov.generate();
+
+let manyNewTerms = markov.generateList(100);
 ```
+
+See "Developing" below for more information. The frontend (`+page.svelte`) is demo'd via `npm run dev -- --open`.
+It implements the results of generation as a reactive `SvelteSet` to automatically prune repeated terms in the output, with a hardcoded 500 attempt limit to avoid problems where the amount of data provided is insufficient to generate the requested number of unique terms. This is done rather than trying to compare the number of terms in the data vs. the number of requested terms in the `generateNew` function.
 
 ## Developing
 
