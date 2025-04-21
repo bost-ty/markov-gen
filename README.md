@@ -15,7 +15,9 @@ let newTerm = markov.generate();
 let manyNewTerms = markov.generateList(100);
 ```
 
-See "Developing" below for more information. The frontend (`+page.svelte`) is demo'd via `npm run dev -- --open`.
+See "Developing" below for more information.
+
+The frontend (`+page.svelte`) is demo'd via `npm run dev -- --open`.
 It implements the results of generation as a reactive `SvelteSet` to automatically prune repeated terms in the output, with a hardcoded 500 attempt limit to avoid problems where the amount of data provided is insufficient to generate the requested number of unique terms. This is done rather than trying to compare the number of terms in the data vs. the number of requested terms in the `generateNew` function.
 
 ## Developing
