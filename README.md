@@ -2,23 +2,27 @@
 
 The funny little Markov chain generator that could.
 
+A small library and frontend for generating and interacting with [Markov chains](https://en.wikipedia.org/wiki/Markov_chain), specifically word- and token-based Markov chains.
+
 ## Usage 
 
-`src/lib/markov.ts` (`$lib/markov`) exports a `MarkovGenerator`:
+`src/lib/markov.ts` (`$lib/markov`) exports a `MarkovGenerator` class:
 
 ```ts
-const data = ['markov', 'chains', 'are', 'cool'];
-const markov = new MarkovGenerator(data);
+const input_data = ['markov', 'chains', 'are', 'cool'];
+const markov = new MarkovGenerator(input_data);
 
-let newTerm = markov.generate();
-
-let manyNewTerms = markov.generateList(100);
+const oneNewTerm = markov.generate();
+const manyNewTerms = markov.generateList(100);
 ```
 
-See "Developing" below for more information.
+Try out the frontend (`+page.svelte`) via `npm run dev -- --open`.
 
-The frontend (`+page.svelte`) is demo'd via `npm run dev -- --open`.
-It implements the results of generation as a reactive `SvelteSet` to automatically prune repeated terms in the output, with a hardcoded 500 attempt limit to avoid problems where the amount of data provided is insufficient to generate the requested number of unique terms. This is done rather than trying to compare the number of terms in the data vs. the number of requested terms in the `generateNew` function.
+## How it works
+
+The markov-gen frontend implements the results of the Markov chain-based term generation in a reactive [`SvelteSet`](https://svelte.dev/docs/svelte/svelte-reactivity#SvelteSet) (a state-reactive Set built in to Svelte) to automatically prune repeated terms in the output, with a **hardcoded 500 term-generation attempt limit** to avoid problems where the amount of data provided is insufficient to generate the requested number of **unique terms**. This is done rather than trying to compare the number of terms in the data vs. the number of requested terms in the `generateNew` function.
+
+To get started, try the default term list or make up your own in the text area.
 
 ## Developing
 
@@ -33,12 +37,10 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+After building, preview the production build with `npm run preview`.
