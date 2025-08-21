@@ -36,7 +36,7 @@
 
 	let termAttempts = $state(0);
 	const termAttemptLimit = 500;
-	let termCount = $state(1);
+	let termCount = $state(10);
 	let requestedTermCount = $state(0);
 
 	const generateNew = (): void => {
