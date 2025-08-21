@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { SvelteSet } from 'svelte/reactivity';
 	import { names as egyptianNames } from '$lib/data/egyptian.json';
+	import { names as fantasyNames } from '$lib/data/fantasy.json';
 	import { MarkovGenerator } from '$lib/markov';
 
 	type CategoryData = {
@@ -16,6 +17,10 @@
 		{
 			name: 'Egyptian',
 			model: new MarkovGenerator(egyptianNames)
+		},
+		{
+			name: 'Generic Fantasy',
+			model: new MarkovGenerator(fantasyNames)
 		}
 	]);
 
